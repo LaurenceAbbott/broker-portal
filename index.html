@@ -1,1 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Broker Portal (Standalone) — Phase 1</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="app" id="appRoot">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar__brand">
+        <div class="brand__mark" aria-hidden="true">◐</div>
+        <div class="brand__text">
+          <div class="brand__org" id="orgName">Broker Portal</div>
+          <div class="brand__sub">Standalone • Phase 1</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <div class="nav__section">
+          <div class="nav__label">Overview</div>
+          <button class="nav__item is-active" data-route="dashboard">
+            <span class="nav__icon">⌂</span>
+            <span>Dashboard</span>
+          </button>
+        </div>
+
+        <div class="nav__section">
+          <div class="nav__label">Customer portal operations</div>
+          <button class="nav__item" data-route="customers">
+            <span class="nav__icon">👤</span>
+            <span>Customers</span>
+          </button>
+          <button class="nav__item" data-route="documents">
+            <span class="nav__icon">📄</span>
+            <span>Documents</span>
+          </button>
+        </div>
+
+        <div class="nav__section">
+          <div class="nav__label">Configure & build</div>
+          <button class="nav__item" data-route="portal-config">
+            <span class="nav__icon">🎨</span>
+            <span>Portal styling & config</span>
+          </button>
+          <button class="nav__item" data-route="question-sets">
+            <span class="nav__icon">🧩</span>
+            <span>Question set management</span>
+          </button>
+        </div>
+
+        <div class="nav__section">
+          <div class="nav__label">Measure & improve</div>
+          <button class="nav__item" data-route="analytics">
+            <span class="nav__icon">📈</span>
+            <span>Analytics & tracking</span>
+          </button>
+          <button class="nav__item" data-route="help-support">
+            <span class="nav__icon">💬</span>
+            <span>Help & support</span>
+          </button>
+          <button class="nav__item" data-route="release-notes">
+            <span class="nav__icon">🗒</span>
+            <span>Release notes</span>
+          </button>
+        </div>
+
+        <div class="nav__section" id="internalSection" hidden>
+          <div class="nav__label">Internal (OGI)</div>
+          <button class="nav__item" data-route="onboarding">
+            <span class="nav__icon">🧰</span>
+            <span>Implementation & onboarding</span>
+          </button>
+        </div>
+
+        <div class="nav__footer">
+          <button class="nav__item nav__item--ghost" data-route="settings">
+            <span class="nav__icon">⚙️</span>
+            <span>Settings</span>
+          </button>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <!-- Topbar -->
+      <header class="topbar">
+        <div class="topbar__left">
+          <div class="crumbs" id="crumbs">Dashboard</div>
+        </div>
+
+        <div class="topbar__right">
+          <label class="search" aria-label="Search">
+            <span class="search__icon">⌕</span>
+            <input id="globalSearch" type="search" placeholder="Search customers, docs, question sets…" />
+          </label>
+
+          <div class="seg">
+            <button class="seg__btn is-active" id="envPreviewBtn" title="Preview environment">Preview</button>
+            <button class="seg__btn" id="envLiveBtn" title="Live environment">Live</button>
+          </div>
+
+          <div class="chip chip--role" id="roleChip" title="Switch role">Broker Admin ▾</div>
+          <button class="btn btn--primary" id="primaryActionBtn">New</button>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <section class="content">
+        <div id="page"></div>
+      </section>
+
+      <!-- Toast -->
+      <div class="toast-wrap" id="toastWrap" aria-live="polite" aria-atomic="true"></div>
+    </main>
+  </div>
+
+  <!-- Drawer -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer__backdrop" data-drawer-close></div>
+    <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Details drawer">
+      <div class="drawer__header">
+        <div class="drawer__title" id="drawerTitle">Details</div>
+        <button class="iconbtn" data-drawer-close aria-label="Close">✕</button>
+      </div>
+      <div class="drawer__body" id="drawerBody"></div>
+      <div class="drawer__footer" id="drawerFooter"></div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-modal-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-label="Modal dialog">
+      <div class="modal__header">
+        <div class="modal__title" id="modalTitle">Modal</div>
+        <button class="iconbtn" data-modal-close aria-label="Close">✕</button>
+      </div>
+      <div class="modal__body" id="modalBody"></div>
+      <div class="modal__footer" id="modalFooter"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
 
